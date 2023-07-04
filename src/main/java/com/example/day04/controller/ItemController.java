@@ -36,6 +36,13 @@ public class ItemController {
         return "itemList";
     }
 
+    @GetMapping("/api/itemList/{category}/{page}")
+    public String categoryList(Model model,@PathVariable String category, @PathVariable int page){
+        Page<Item> itemList = itemService.categoryItem(category,page);
+        model.addAttribute("items",itemList);
+        return category+"List";
+    }
+
     @GetMapping("/api/itemOne/{id}")
     public String itemOne(Model model,@PathVariable Long id){
         Item item = itemService.oneItem(id);

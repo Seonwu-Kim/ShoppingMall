@@ -30,6 +30,11 @@ public class ItemService {
         PageRequest pageRequest = PageRequest.of(page,8);
         return itemRepository.findAll(pageRequest);
     }
+
+    public Page<Item> categoryItem(String category,int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return itemRepository.findByCategory(category,pageRequest);
+    }
     @Transactional
     public Long updateItem(ItemRequestDto itemRequestDto, Long id){
         Item item = itemRepository.findById(id).orElseThrow(() -> new NullPointerException("찾으시는 아이디가 없습니다."));
