@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!--
+   Massively by HTML5 UP
+   html5up.net | @ajlkn
+   Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<head>
+    <title>1조 쇼핑몰</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"/></noscript>
+</head>
+<style>
+    .description {
+        font-size: 13px; /* 적절한 크기로 조정하세요 */
+    }
+</style>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper" class="fade-in">
+
+    <!-- Intro -->
+    <div id="intro">
+        <h1>1조<br/>
+            쇼핑몰</h1>
+        <p>참고자료<br><a href="https://html5up.net">html5up</a></p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">메인화면</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index.html">상의</a></li>
+            <li><a href="index.html">하의</a></li>
+            <li><a href="boardList.html">게시판</a></li>
+            <li><a href="generic.html">Generic Page</a></li>
+            <li><a href="elements.html">Elements Reference</a></li>
+        </ul>
+        <ul class="icons">
+            <li><a href="#" ><span class="label"><img src="images/search.png" alt="검색" style="width: 45px; height: 45px;"></span></a></li>
+            <li><a href="signIn.html"><span class="label"><img src="images/join.png" alt="로그인" style="width: 40px; height: 40px;"></span></a></li>
+            <li><a href="mypage.html"><span class="label"><img src="images/mypage.png" alt="마이페이지" style="width: 35px; height: 35px;"></span></a></li>
+            <li><a href="#"><span class="label"><img src="images/cart.png" alt="장바구니" style="width: 35px; height: 35px;"></span></a></li>
+            <li><a href="#"><span class="label"><img src="images/heart.png" alt="찜" style="width: 35px; height: 35px;"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+        <!-- Featured Post -->
+        <form class="signup-form" name="signupForm" >
+            <div class="fields">
+                <div class="field">
+                    <label for="userId">ID</label>
+                    <input type="text" name="userId" id="userId" required/>
+                    <span class="description">영문으로 6글자 이상 12글자이하의 아이디를 입력해주세요.</span>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required/>
+                </div>
+                <div class="field">
+                    <label for="passwordCheck">Password Check</label>
+                    <input type="password" name="passwordCheck" id="passwordCheck" required/>
+                    <span class="description">동일한 비밀번호를 입력해주세요.</span>
+                </div>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required/>
+                    <span class="description">한글로만 이루어져야하며 2글자 이상으로 입력해주세요.</span>
+                </div>
+                <div class="field">
+                    <label for="name">Phone</label>
+                    <input type="text" name="phone" id="phone" required/>
+                    <span class="description">전화번호 형식을 입력해주세요. (예: 010-1234-5678)</span>
+
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required/>
+                </div>
+                <div class="field">
+                    <label>주소</label>
+                    <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+                    <input type="text" id="sample4_postcode" placeholder="우편번호">
+                    <input type="text" id="sample4_roadAddress" placeholder="도로명주소" size="60" >
+                    <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
+                    <span id="guide" style="color:#999;display:none"></span>
+                    <input type="text" id="sample4_detailAddress" placeholder="상세주소"  size="60">
+                    <input type="hidden" id="sample4_extraAddress" placeholder="참고항목"  size="60">
+                    <input type="hidden" id="sample4_engAddress" placeholder="영문주소"  size="60" >
+                </div>
+            </div>
+            <div>
+                <ul class="actions">
+                    <li><input type="button" value="회원가입" class = "primary" onclick="return validateForm()"/></li>
+                    <li><input type="reset" value="내용재입력"></li>
+                </ul>
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul>
+            <li>&copy; Untitled</li>
+            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    // 유효성 검사 함수
+    function validateForm() {
+        var userId = document.forms["signupForm"]["userId"].value;
+        var password = document.forms["signupForm"]["password"].value;
+        var passwordCheck = document.forms["signupForm"]["passwordCheck"].value;
+        var name = document.forms["signupForm"]["name"].value;
+        var email = document.forms["signupForm"]["email"].value;
+        var phone = document.forms["signupForm"]["phone"].value;
+        //var address = document.forms["signupForm"]["address"].value;
+
+        // userId 영문 6글자 이상 검사
+        var userIdRegex = /^[a-zA-Z]{6,12}$/;
+        if (!userId.match(userIdRegex)) {
+            alert("영문으로 6글자 이상 12글자 이하의 아이디를 입력해주세요.");
+            return false;
+        }
+
+        // 비밀번호 확인
+        if (password != passwordCheck) {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            return false;
+        }
+
+        //이름 유효성 검사
+        var nameRegex = /^[가-힣]{2,}$/;
+        if (!name.match(nameRegex)) {
+            alert("한글로만 이루어져야하며 2글자 이상으로 입력하세요.");
+            return false;
+        }
+
+        // 전화번호 유효성 검사
+        var phoneRegex = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
+        if (!phone.match(phoneRegex)) {
+            alert("올바른 전화번호 형식을 입력해주세요. (예: 010-1234-5678)");
+            return false;
+        }
+        // 이메일 유효성 검사
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!email.match(emailRegex)) {
+            alert("올바른 이메일 주소를 입력해주세요.");
+            return false;
+        }
+
+        return memberSignup();
+    }
+</script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+                document.getElementById("sample4_engAddress").value = data.addressEnglish;
+
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
+<script>
+    function memberSignup(){
+        let userId = $('#userId').val();
+        let password = $('#password').val();
+        let passwordCheck = $('#passwordCheck').val();
+        let name = $('#name').val();
+        let phone = $('#phone').val();
+        let email = $('#email').val();
+        let sample4_postcode = $('#sample4_postcode').val();
+        let sample4_roadAddress = $('#sample4_roadAddress').val();
+        let sample4_detailAddress = $('#sample4_detailAddress').val();
+
+        let data = {'userId' : userId, 'password' : password, 'passwordCheck' : passwordCheck,
+            'name' : name, 'phone' : phone, 'email' : email, 'sample4_postcode' : sample4_postcode,
+            'sample4_roadAddress' : sample4_roadAddress, 'sample4_detailAddress' : sample4_detailAddress};
+
+        $.ajax({
+            type: "POST",
+            url: "/api/members",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response){
+                alert('회원가입 되었습니다.');
+                window.location.href="index.html"
+            }
+        });
+
+    }
+</script>
+
+
+
+</body>
+</html>
