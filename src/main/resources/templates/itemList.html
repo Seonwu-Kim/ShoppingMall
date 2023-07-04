@@ -104,22 +104,11 @@
     <div id="main">
         <!-- Posts -->
         <section class="posts">
-            <article>
-                <header>
-                    <h2><a href="#">스트라이프 햇</a></h2>
-                </header>
-                <a href="#" class="image fit"><img src="/images/acc1_1920.jpg" alt=""/></a>
-                <p>넓은 챙이 달린 브레이드 마감 모자.<br>
-                    29,900 원</p>
-                <ul class="actions special">
-                    <li><a href="#" class="button">구매</a></li>
-                </ul>
-            </article>
             <article th:each="item : ${items}">
                 <header>
-                    <h2><a href="#" th:text="${item.title}"></a></h2>
+                    <h2><a th:href="@{/api/itemOne/{id}(id=${item.id})}" th:text="${item.title}"></a></h2>
                 </header>
-                <a href="#" class="image fit"><img th:src="@{${item.filePath}}" alt=""/></a>
+                <a th:href="@{/api/itemOne/{id}(id=${item.id})}" class="image fit"><img th:src="@{${item.filePath}}" alt=""/></a>
                 <p th:text="${item.shortDesc}"></p>
                 <p>[[${item.price}]]원</p>
                 <ul class="actions special">
@@ -133,13 +122,8 @@
         <footer>
             <div class="pagination">
                 <!--<a href="#" class="previous">Prev</a>-->
-                <a href="#" class="page active">1</a>
-                <a href="#" class="page">2</a>
-                <a href="#" class="page">3</a>
-                <span class="extra">&hellip;</span>
-                <a href="#" class="page">8</a>
-                <a href="#" class="page">9</a>
-                <a href="#" class="page">10</a>
+<!--                <a href="#" class="page active">1</a>-->
+                <a th:each="item, i: ${items}" th:href="@{/api/itemList/{id}(id=${i.index})}" th:text="${i.count}" th:if="${items.getTotalPages()>=i.count}"></a>
                 <a href="#" class="next">Next</a>
             </div>
         </footer>

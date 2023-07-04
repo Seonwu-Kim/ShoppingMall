@@ -4,6 +4,8 @@ import com.example.day04.domain.Item;
 import com.example.day04.domain.ItemRequestDto;
 import com.example.day04.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +29,9 @@ public class ItemController {
         return "redirect:/api/itemList";
     }
 
-    @GetMapping("/api/itemList")
-    public String listItem(Model model){
-        List<Item> itemList = itemService.allItem();
+    @GetMapping("/api/itemList/{page}")
+    public String listItem(Model model,@PathVariable int page){
+        Page<Item> itemList = itemService.allItem(page);
         model.addAttribute("items",itemList);
         return "itemList";
     }

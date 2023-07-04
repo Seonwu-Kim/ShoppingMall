@@ -4,6 +4,9 @@ import com.example.day04.domain.Item;
 import com.example.day04.domain.ItemRepository;
 import com.example.day04.domain.ItemRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +26,9 @@ public class ItemService {
         return itemRepository.findById(id).orElseThrow(() -> new NullPointerException("찾으시는 아이디가 없습니다."));
     }
 
-    public List<Item> allItem(){
-        return itemRepository.findAll();
+    public Page<Item> allItem(int page){
+        PageRequest pageRequest = PageRequest.of(page,8);
+        return itemRepository.findAll(pageRequest);
     }
     @Transactional
     public Long updateItem(ItemRequestDto itemRequestDto, Long id){
