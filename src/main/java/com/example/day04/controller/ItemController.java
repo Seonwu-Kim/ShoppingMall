@@ -26,13 +26,21 @@ public class ItemController {
     @PostMapping("/api/item")
     public String saveItem(@ModelAttribute ItemRequestDto itemRequestDto){
         itemService.createItem(itemRequestDto);
-        return "redirect:/api/itemList";
+        return "redirect:/api/itemList/0";
     }
 
     @GetMapping("/api/itemList/{page}")
     public String listItem(Model model,@PathVariable int page){
         Page<Item> itemList = itemService.allItem(page);
         model.addAttribute("items",itemList);
+        page+=1;
+        int totalPage = itemList.getTotalPages();
+        int startPage = Math.max(page-4,1);
+        int endPage = Math.min(page+4,totalPage);
+//        model.addAttribute("totalPage",totalPage);
+        model.addAttribute("nowPage",page);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
         return "itemList";
     }
 
@@ -40,7 +48,16 @@ public class ItemController {
     public String categoryList(Model model,@PathVariable String category, @PathVariable int page){
         Page<Item> itemList = itemService.categoryItem(category,page);
         model.addAttribute("items",itemList);
-        return category+"List";
+        page+=1;
+        int totalPage = itemList.getTotalPages();
+        int startPage = Math.max(page-4,1);
+        int endPage = Math.min(page+4,totalPage);
+//        model.addAttribute("totalPage",totalPage);
+        model.addAttribute("nowPage",page);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+        model.addAttribute("category",category);
+        return "categoryList";
     }
 
     @GetMapping("/api/itemOne/{id}")
