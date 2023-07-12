@@ -3,18 +3,26 @@ package com.example.day73.controller;
 
 import com.example.day73.domain.Item;
 import com.example.day73.domain.ItemRequestDto;
+import com.example.day73.domain.Member;
+import com.example.day73.domain.MemberRepository;
 import com.example.day73.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.Optional;
 
 
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/admin/postItem")
     public String postItem(){
@@ -77,8 +85,15 @@ public class ItemController {
     }
 
     @GetMapping("/api/itemOne/{id}")
-    public String itemOne(Model model,@PathVariable Long id){
+    public String itemOne(Model model, @PathVariable Long id, Principal principal, Authentication authentication){
+
         Item item = itemService.oneItem(id);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Optional<Member> member = memberRepository.findByUserId(userDetails.getUsername());
+        // optional로 해야하는지 확인
+        // 멤버 리포지토리로 id로 확인 체크 / id로 가져오는 jpa 구문 작성
+        // https://djunnni.gitbook.io/springboot/2019-11-30 참고
+        // model 에 가져온 멤버 추가하고 타임리프로 결제 창 넘기기
         model.addAttribute("item",item);
         return "itemOne";
     }

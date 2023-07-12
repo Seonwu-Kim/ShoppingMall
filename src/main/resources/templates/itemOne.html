@@ -135,14 +135,44 @@
                     </div>원
                 </div>
                 <input type="button" value="장바구니">
-                <input type="button" value="구매하기">
+                <input type="button" value="구매하기" onclick="requestPay()">
             </article>
         </section>
         <section class="posts">
             <p th:text="${item.desc}"></p>
         </section>
     </div>
-
+<script th:inline="javascript">
+    var IMP = window.IMP;
+    function requestPay(){
+        var totalPrice = document.getElementById('totalPrice').innerText;
+        var today = new Date();
+        var hours = today.getHours(); // 시
+        var minutes = today.getMinutes();  // 분
+        var seconds = today.getSeconds();  // 초
+        var milliseconds = today.getMilliseconds();
+        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+        IMP.init("imp84588633");
+        IMP.request_pay({
+            pg: "kcp",
+            merchant_uid: IMP+makeMerchantUid,   // 주문번호
+            name: `[[${item.title}]]`,
+            amount: totalPrice,                         // 숫자 타입
+            buyer_email: "gildong@gmail.com",
+            buyer_name: "홍길동",
+            buyer_tel: "010-4242-4242",
+            buyer_addr: "서울특별시 강남구 신사동",
+            buyer_postcode: "01181"
+        }, function (rsp) { // callback
+            //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+            if(rsp.success){
+                alert("결제가 완료되었습니다!");
+            } else{
+                alert("결제를 취소하였습니다.");
+            }
+        });
+    }
+</script>
     <!-- Footer -->
     <footer id="footer">
         <section>
@@ -206,12 +236,17 @@
 
 <!-- Scripts -->
 <script src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script src="/assets/js/jquery.scrollex.min.js"></script>
 <script src="/assets/js/jquery.scrolly.min.js"></script>
 <script src="/assets/js/browser.min.js"></script>
 <script src="/assets/js/breakpoints.min.js"></script>
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/main.js"></script>
+<script
+        type="text/javascript"
+        src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+></script>
 
 </body>
 </html>
