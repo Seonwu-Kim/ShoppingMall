@@ -10,3 +10,5 @@ insert into item(id,create_at,modified_at,category,desc,file_name,file_path,pric
 insert into item(id,create_at,modified_at,category,desc,file_name,file_path,price,short_desc,title) values(9910,'2023-07-05 15:58:18.312','2023-07-05 17:58:18.312','accessory','영혼이 빨려들어갈 것 같은 환상적인 목걸이','uploadFile','/images/acc3_1920.jpg',25600,'목걸쓰','이쁜이 목걸이');
 insert into item(id,create_at,modified_at,category,desc,file_name,file_path,price,short_desc,title) values(9911,'2023-07-05 16:57:30.945','2023-07-05 17:59:30.945','bottom','엄청난 초록색을 자랑하죠','uploadFile','/images/bottom1_1920.jpg',20500,'초록색 바지입니다.','쫀쫀한 바지');
 insert into item(id,create_at,modified_at,category,desc,file_name,file_path,price,short_desc,title) values(9912,'2023-07-05 17:58:18.312','2023-07-05 18:58:18.312','top','착용 즉시 자신감이 뿜뿜','uploadFile','/images/top4_1920.jpg',39800,'줄무늬 티셔츠','자신감이 생기는 티셔츠');
+
+-- insert into member(auth, email, name, password, password_check, phone, sample4_detail_address, sample4_postcode, sample4_road_address, user_id, id) values ('admin','test123@naver.com','홍길동','123123','123123','010-2345-5678','00123','경기도','어딘가','asdasd',9988);

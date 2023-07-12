@@ -151,18 +151,20 @@
         var minutes = today.getMinutes();  // 분
         var seconds = today.getSeconds();  // 초
         var milliseconds = today.getMilliseconds();
+        // 주문 고유번호 만들기
         var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
         IMP.init("imp84588633");
         IMP.request_pay({
             pg: "kcp",
             merchant_uid: IMP+makeMerchantUid,   // 주문번호
             name: `[[${item.title}]]`,
             amount: totalPrice,                         // 숫자 타입
-            buyer_email: "gildong@gmail.com",
-            buyer_name: "홍길동",
-            buyer_tel: "010-4242-4242",
-            buyer_addr: "서울특별시 강남구 신사동",
-            buyer_postcode: "01181"
+            buyer_email: `[[${member.email}]]`,
+            buyer_name: `[[${member.name}]]`,
+            buyer_tel: `[[${member.phone}]]`,
+            buyer_addr: `[[${member.sample4_detailAddress}]]`,
+            buyer_postcode: `[[${member.sample4_postcode}]]`
         }, function (rsp) { // callback
             //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
             if(rsp.success){
